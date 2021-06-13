@@ -19,3 +19,7 @@ const Route = use('Route')
 Route.get('/', ({ request }) => {
 	return '...some html'
 })
+
+Route.get('/register', () => {
+	return '...form for customers to make new profiles'
+})
