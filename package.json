@@ -29,7 +29,9 @@
     "@adonisjs/validator": "^5.1.0",
     "sqlite3": "^5.0.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "^9.0.1"
+  },
   "autoload": {
     "App": "./app"
   }
