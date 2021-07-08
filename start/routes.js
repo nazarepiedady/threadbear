@@ -17,9 +17,16 @@
 const Route = use('Route')
 
 Route.get('/', ({ request }) => {
-	return '...some html'
+  return '...some html'
 })
 
 Route.get('/register', () => {
-	return '...form for customers to make new profiles'
+  return '...form for customers to make new profiles'
+})
+
+
+// login routes
+Route.get('/login', () => {
+  // show login form
+  return 'GET /login'
 })
