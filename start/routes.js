@@ -20,6 +20,7 @@ Route.get('/', ({ request }) => {
   return '...some html'
 })
 
+
 // register routes
 Route.get('/register', () => {
   // show registration form
@@ -43,8 +44,16 @@ Route.post('/login', () => {
   return 'POST /login'
 })
 
+
 // logout routes
 Route.put('/logout', () => {
   // expire current customer session
   return 'PUT /logout'
+})
+
+
+// forgot-password routes
+Route.get('/forgot-password', () => {
+  // show forgot password form
+  return 'GET /forgot-password'
 })
