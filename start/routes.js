@@ -26,6 +26,11 @@ Route.get('/register', () => {
   return 'GET /register'
 })
 
+Route.post('/register', () => {
+  // create new customer profile
+  return 'POST /register'
+})
+
 
 // login routes
 Route.get('/login', () => {
