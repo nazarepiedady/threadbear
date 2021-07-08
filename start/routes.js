@@ -57,3 +57,8 @@ Route.get('/forgot-password', () => {
   // show forgot password form
   return 'GET /forgot-password'
 })
+
+Route.post('/forgot-password', () => {
+  // create new password reset token and send e-mail
+  return 'POST /forgot-password'
+})
