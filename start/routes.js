@@ -30,3 +30,8 @@ Route.get('/login', () => {
   // show login form
   return 'GET /login'
 })
+
+Route.post('/login', () => {
+  // create new customer session
+  return 'POST /login'
+})
