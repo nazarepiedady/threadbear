@@ -20,8 +20,10 @@ Route.get('/', ({ request }) => {
   return '...some html'
 })
 
+// register routes
 Route.get('/register', () => {
-  return '...form for customers to make new profiles'
+  // show registration form
+  return 'GET /register'
 })
 
 
