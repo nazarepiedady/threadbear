@@ -35,3 +35,9 @@ Route.post('/login', () => {
   // create new customer session
   return 'POST /login'
 })
+
+// logout routes
+Route.put('/logout', () => {
+  // expire current customer session
+  return 'PUT /logout'
+})
