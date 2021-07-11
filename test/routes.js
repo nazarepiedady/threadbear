@@ -51,4 +51,8 @@ describe('GET /login', () => {
   it('should have the correct status (200)', done => {
     shouldBeOk('GET', '/login', done)
   })
+
+  it('should have the correct message', done => {
+    shouldHaveMessage('GET', '/login', done)
+  })
 })
