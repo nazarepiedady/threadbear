@@ -48,5 +48,7 @@ const shouldHaveMessage = (method, path, message, done) => {
 }
 
 describe('GET /login', () => {
-
+  it('should have the correct status (200)', done => {
+    shouldBeOk('GET', '/login', done)
+  })
 })
