@@ -46,3 +46,7 @@ const shouldHaveMessage = (method, path, message, done) => {
     )
     .end()
 }
+
+describe('GET /login', () => {
+
+})
