@@ -79,3 +79,15 @@ describe('PUT /logout', () => {
     shouldHaveMessage('PUT', '/logout', done)
   })
 })
+
+
+// test the GET method of /forgot-password route
+describe('GET /forgot-password', () => {
+  it('should have the correct status code (200)', done => {
+    shouldBeOk('GET', '/forgot-password', done)
+  })
+
+  it('should have the correct message', done => {
+    shouldHaveMessage('GET', '/forgot-password', done)
+  })
+})
