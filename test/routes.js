@@ -49,12 +49,12 @@ const shouldHaveMessage = (method, path, message, done) => {
 
 // test the GET method of /login route
 describe('GET /login', () => {
-  it('should have the correct status (200)', done => {
+  it('should have the correct status code (200)', done => {
     shouldBeOk('GET', '/login', done)
   })
 
   it('should have the correct message', done => {
-    shouldHaveMessage('GET', '/login', done)
+    shouldHaveMessage('GET', '/login', 'GET /login', done)
   })
 })
 
@@ -65,9 +65,10 @@ describe('POST /login', () => {
   })
 
   it('should have the correct message', done => {
-    shouldHaveMessage('POST', '/login', done)
+    shouldHaveMessage('POST', '/login', 'POST /login', done)
   })
 })
+
 
 // test the PUT method of /logout route
 describe('PUT /logout', () => {
@@ -76,7 +77,7 @@ describe('PUT /logout', () => {
   })
 
   it('should have the correct message', done => {
-    shouldHaveMessage('PUT', '/logout', done)
+    shouldHaveMessage('PUT', '/logout', 'PUT /logout', done)
   })
 })
 
@@ -88,10 +89,10 @@ describe('GET /forgot-password', () => {
   })
 
   it('should have the correct message', done => {
-    shouldHaveMessage('GET', '/forgot-password', done)
+    shouldHaveMessage(
+      'GET', '/forgot-password', 'GET /forgot-password', done)
   })
 })
-
 
 // test the POST method of /forgot-password route
 describe('POST /forgot-password', () => {
@@ -100,6 +101,8 @@ describe('POST /forgot-password', () => {
   })
 
   it('should have the correct message', done => {
-    shouldHaveMessage('POST', '/forgot-password', done)
+    shouldHaveMessage(
+      'POST', '/forgot-password', 'POST /forgot-password', done)
   })
 })
+
