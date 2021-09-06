@@ -47,6 +47,7 @@ const shouldHaveMessage = (method, path, message, done) => {
     .end()
 }
 
+// test the GET method of /login route
 describe('GET /login', () => {
   it('should have the correct status (200)', done => {
     shouldBeOk('GET', '/login', done)
@@ -54,5 +55,17 @@ describe('GET /login', () => {
 
   it('should have the correct message', done => {
     shouldHaveMessage('GET', '/login', done)
+  })
+})
+
+
+// test the POST method of /login route
+describe('POST /login', () => {
+  it('should have the correct status code (200)', done => {
+    shouldBeOk('POST', '/login', done)
+  })
+
+  it('should have the correct message', done => {
+    shouldHvaeMessage('POST', '/login', done)
   })
 })
