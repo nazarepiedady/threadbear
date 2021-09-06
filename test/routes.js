@@ -58,7 +58,6 @@ describe('GET /login', () => {
   })
 })
 
-
 // test the POST method of /login route
 describe('POST /login', () => {
   it('should have the correct status code (200)', done => {
@@ -66,6 +65,17 @@ describe('POST /login', () => {
   })
 
   it('should have the correct message', done => {
-    shouldHvaeMessage('POST', '/login', done)
+    shouldHaveMessage('POST', '/login', done)
+  })
+})
+
+// test the PUT method of /logout route
+describe('PUT /logout', () => {
+  it('should have the correct status code (200)', done => {
+    shouldBeOk('PUT', '/logout', done)
+  })
+
+  it('should have the correct message', done => {
+    shouldHaveMessage('PUT', '/logout', done)
   })
 })
