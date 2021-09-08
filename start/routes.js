@@ -103,3 +103,35 @@ Route.post('/:customer/products', ({ params }) => {
   // create a new product
   return 'POST /:customer/products ' + params.customer
 })
+
+
+// customer product routes
+Route.get('/:customer/:product', ({ params }) => {
+  // show customer product profile
+  return (
+    'GET /:customer/:product ' +
+    params.customer +
+    ' ' +
+    params.product
+  )
+})
+
+Route.put('/:customer/:product', ({ params }) => {
+  // update customer product profile
+  return (
+    'PUT /:customer/:product ' +
+    params.customer +
+    ' ' +
+    params.product
+  )
+})
+
+Route.delete('/:customer/:product', ({ params }) => {
+  // delete customer product profile
+  return (
+    'DELETE /:customer/:product ' +
+    params.customer +
+    ' ' +
+    params.product
+  )
+})
