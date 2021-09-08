@@ -74,3 +74,20 @@ Route.post('/reset-password/:token', ({ params }) => {
   // create new password reset token and send e-mail
   return 'POST /reset-password ' + params.token
 })
+
+
+// customer routes
+Route.get('/:customer', ({ params }) => {
+  // show customer profile
+  return 'GET /:customer ' + params.customer
+})
+
+Route.put('/:customer', ({ params }) => {
+  // update customer profile
+  return 'PUT /:customer ' + params.customer
+})
+
+Route.delete('/:customer', ({ params }) => {
+  // delete customer profile
+  return 'DELETE /:customer ' + params.customer
+})
