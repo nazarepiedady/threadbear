@@ -70,4 +70,7 @@ Route.get('/reset-password/:token', ({ params }) => {
   return 'GET /reset-password ' + params.token
 })
 
-
+Route.post('/reset-password/:token', ({ params }) => {
+  // create new password reset token and send e-mail
+  return 'POST /reset-password ' + params.token
+})
