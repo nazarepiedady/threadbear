@@ -106,3 +106,18 @@ describe('POST /forgot-password', () => {
   })
 })
 
+// test the GET method of /reset-password route
+describe('GET /reset-password', () => {
+  it('should have the correct status (200)', done => {
+    shouldBeOk('GET', 'reset-password/token123', done)
+  })
+
+  it('should have the correct message', done => {
+    shouldHaveMessage(
+      'GET',
+      '/reset-password/token123',
+      'GET /reset-password token123',
+      done
+    )
+  })
+})
