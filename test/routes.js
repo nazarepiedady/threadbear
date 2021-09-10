@@ -222,7 +222,7 @@ describe('POST /:customer/products', () => {
 })
 
 
-// test the GET method of /:customer/:product
+// test the GET method of /:customer/:product route
 describe('GET /:customer/:product', () => {
   it('should have the correct status code (200)', done => {
     shouldBeOk('GET', '/assertchris/teddy', done)
@@ -233,6 +233,22 @@ describe('GET /:customer/:product', () => {
       'GET',
       '/assertchris/teddy',
       'GET /assertchris/teddy assertchris teddy',
+      done
+    )
+  })
+})
+
+// test the PUT method of /:customer/:product route
+describe('PUT /:customer/:product', () => {
+  it('should have the correct status code (200)', done => {
+    shouldBeOk('PUT', '/assertchris/teddy', done)
+  })
+
+  it('should have the correct message', done => {
+    shoudlHaveMessage(
+      'PUT',
+      '/assertchris/teddy',
+      'PUT /assertchris/teddy assertchris teddy',
       done
     )
   })
