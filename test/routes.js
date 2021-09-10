@@ -204,3 +204,19 @@ describe('GET /:customer/products', () => {
     )
   })
 })
+
+// test the POST method of /:customer/products route
+describe('POST /:customer/products', () => {
+  it('should have the correct status code (200)', done => {
+    shouldBeOk('POST', '/assertchris/products', done)
+  })
+
+  it('should have the correct message', done => {
+    shouldHaveMessage(
+      'POST',
+      '/assertchris/products',
+      'POST /assertchris/products assertchris',
+      done
+    )
+  })
+})
