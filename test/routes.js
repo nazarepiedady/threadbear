@@ -109,7 +109,7 @@ describe('POST /forgot-password', () => {
 
 // test the GET method of /reset-password route
 describe('GET /reset-password', () => {
-  it('should have the correct status (200)', done => {
+  it('should have the correct status code (200)', done => {
     shouldBeOk('GET', 'reset-password/token123', done)
   })
 
@@ -142,7 +142,7 @@ describe('POST /reset-password', () => {
 
 // test the GET method of /:customer route
 describe('GET /:customer', () => {
-  it('should have the correct status (200)', done => {
+  it('should have the correct status code (200)', done => {
     shouldBeOk('GET', '/assertchris', done)
   })
 
@@ -158,7 +158,7 @@ describe('GET /:customer', () => {
 
 // test the PUT method of /:customer route
 describe('PUT /:customer', () => {
-  it('should have the correct status (200)', done => {
+  it('should have the correct status code (200)', done => {
     shouldBeOk('PUT', '/assertchris', done)
   })
 
@@ -167,6 +167,22 @@ describe('PUT /:customer', () => {
       'PUT',
       '/assertchris',
       'PUT /:customer assertchris',
+      done
+    )
+  })
+})
+
+// test the DELETE method of /:customer route
+describe('DELETE /:customer', () => {
+  it('should have the correct status code (200)', done => {
+    shouldBeOk('DELETE', '/assertchris', done)
+  })
+
+  it('should have the correct message', done => {
+    shouldHaveMessage(
+      'DELETE',
+      '/assertchris',
+      'DELETE /:customer assertchris',
       done
     )
   })
