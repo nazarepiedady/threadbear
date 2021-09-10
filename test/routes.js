@@ -215,7 +215,7 @@ describe('POST /:customer/products', () => {
     shouldHaveMessage(
       'POST',
       '/assertchris/products',
-      'POST /assertchris/products assertchris',
+      'POST /:customer/products assertchris',
       done
     )
   })
@@ -232,7 +232,7 @@ describe('GET /:customer/:product', () => {
     shouldHaveMessage(
       'GET',
       '/assertchris/teddy',
-      'GET /assertchris/teddy assertchris teddy',
+      'GET /:customer/:product assertchris teddy',
       done
     )
   })
@@ -248,7 +248,7 @@ describe('PUT /:customer/:product', () => {
     shouldHaveMessage(
       'PUT',
       '/assertchris/teddy',
-      'PUT /assertchris/teddy assertchris teddy',
+      'PUT /:customer/:product assertchris teddy',
       done
     )
   })
@@ -264,7 +264,7 @@ describe('DELETE /:customer/:product', () => {
     shouldHaveMessage(
       'DELETE',
       '/assertchris/teddy',
-      'DELETE /assertchris/teddy assertchris teddy',
+      'DELETE /:customer/:product assertchris teddy',
       done
     )
   })
