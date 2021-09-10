@@ -96,7 +96,7 @@ Route.delete('/:customer', ({ params }) => {
 // customer products routes
 Route.get('/:customer/products', ({ params }) => {
   // show customer's products
-  return 'GET /:customer/products ' + product.customer
+  return 'GET /:customer/products ' + params.customer
 })
 
 Route.post('/:customer/products', ({ params }) => {

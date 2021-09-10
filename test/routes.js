@@ -123,6 +123,7 @@ describe('GET /reset-password', () => {
   })
 })
 
+// test the POST method of /reset-password route
 describe('POST /reset-password', () => {
   it('should have the correct status (200)', done => {
     shouldBeOk('POST', '/reset-password/token123', done)
@@ -133,6 +134,23 @@ describe('POST /reset-password', () => {
       'POST',
       '/reset-password/token123',
       'POST /reset-password token123',
+      done
+    )
+  })
+})
+
+
+// test the GET method of /:customer route
+describe('GET /:customer', () => {
+  it('should have the correct status (200)', done => {
+    shouldBeOk('GET', '/assertchris', done)
+  })
+
+  it('should have the correct message', done => {
+    shouldHaveMessage(
+      'GET',
+      '/assertchris',
+      'GET /:customer assertchris',
       done
     )
   })
