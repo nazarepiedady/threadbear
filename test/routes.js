@@ -220,3 +220,20 @@ describe('POST /:customer/products', () => {
     )
   })
 })
+
+
+// test the GET method of /:customer/:product
+describe('GET /:customer/:product', () => {
+  it('should have the correct status code (200)', done => {
+    shouldBeOk('GET', '/assertchris/teddy', done)
+  })
+
+  it('should have the correct message', done => {
+    shouldHaveMessage(
+      'GET',
+      '/assertchris/teddy',
+      'GET /assertchris/teddy assertchris teddy',
+      done
+    )
+  })
+})
