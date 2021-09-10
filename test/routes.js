@@ -187,3 +187,20 @@ describe('DELETE /:customer', () => {
     )
   })
 })
+
+
+// test the GET method of /:customer/products route
+describe('GET /:customer/products', () => {
+  it('should have the correct status code (200)', done => {
+    shouldBeOk('GET', '/assertchris/products', done)
+  })
+
+  it('should have the correct message', done => {
+    shouldHaveMessage(
+      'GET',
+      '/assertchris/products',
+      'GET /:customer/products assertchris',
+      done
+    )
+  })
+})
