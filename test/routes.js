@@ -155,3 +155,19 @@ describe('GET /:customer', () => {
     )
   })
 })
+
+// test the PUT method of /:customer route
+describe('PUT /:customer', () => {
+  it('should have the correct status (200)', done => {
+    shouldBeOk('PUT', '/assertchris', done)
+  })
+
+  it('should have the correct message', done => {
+    shouldHaveMessage(
+      'PUT',
+      '/assertchris',
+      'PUT /:customer assertchris',
+      done
+    )
+  })
+})
