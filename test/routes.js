@@ -245,10 +245,26 @@ describe('PUT /:customer/:product', () => {
   })
 
   it('should have the correct message', done => {
-    shoudlHaveMessage(
+    shouldHaveMessage(
       'PUT',
       '/assertchris/teddy',
       'PUT /assertchris/teddy assertchris teddy',
+      done
+    )
+  })
+})
+
+// test the DELETE method of /:customer/:product route
+describe('DELETE /:customer/:product', () => {
+  it('should have the correct status code (200)', done => {
+    shouldBeOk('DELETE', '/assertchris/teddy', done)
+  })
+
+  it('should have the correct message', done => {
+    shouldHaveMessage(
+      'DELETE',
+      '/assertchris/teddy',
+      'DELETE /assertchris/teddy assertchris teddy',
       done
     )
   })
