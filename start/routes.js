@@ -17,7 +17,26 @@
 const Route = use('Route')
 
 Route.get('/', ({ request }) => {
-  return '...some html'
+  return `
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/style.css">
+        <title>Home</title>
+      </head>
+
+      <body>
+        <section>
+          <div class="logo"></div>
+          <div class="title"></div>
+          <div class="subtitle">
+            <p>AdonisJS ...</p>
+          </div>
+        </section>
+      </body>
+    </html>
+  `
 })
 
 
