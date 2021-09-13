@@ -34,9 +34,9 @@ Route.post('/register', () => {
 
 
 // login routes
-Route.get('/login', () => {
+Route.get('/login', ({ view }) => {
   // show login form
-  return 'GET /login'
+  return view.render('user/login')
 })
 
 Route.post('/login', () => {
