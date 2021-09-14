@@ -22,9 +22,9 @@ Route.get('/', ({ view }) => {
 
 
 // register routes
-Route.get('/register', () => {
+Route.get('/register', ({ view }) => {
   // show registration form
-  return 'GET /register'
+  return view.render('user/register')
 })
 
 Route.post('/register', () => {
