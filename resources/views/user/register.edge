@@ -1,1 +1,27 @@
 @layout('layout')
+
+@section('header')
+  <h1>Register</h1>
+@endsection
+
+
+@section('content')
+  <form method="post">
+    <div class="form-group">
+      <label for="email">E-mail Address</label>
+      <input class="form-control" id="email" type="email">
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input class="form-control" id="password" type="password">
+    </div>
+
+    <div class="form-group">
+      <label for="confirm-password">Confirm Password</label>
+      <input class="form-control" id="confirm-password" type="password">
+    </div>
+
+    <button class="btn btn-primary" type="submit">Register</button>
+  </form>
+@endsection
