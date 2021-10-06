@@ -1,5 +1,8 @@
 'use strict'
 
+const path = require('path')
+const rootPath = path.dirname(__dirname)
+
 /*
 |--------------------------------------------------------------------------
 | Providers
@@ -18,7 +21,9 @@ const providers = [
   '@adonisjs/cors/providers/CorsProvider',
   '@adonisjs/shield/providers/ShieldProvider',
   '@adonisjs/session/providers/SessionProvider',
-  '@adonisjs/auth/providers/AuthProvider'
+  '@adonisjs/auth/providers/AuthProvider',
+
+  rootPath + '/app/Providers/ViewProvider'
 ]
 
 /*
@@ -59,5 +64,6 @@ const aliases = {}
 const commands = [
   'App/Commands/SendReminder'
 ]
+
 
 module.exports = { providers, aceProviders, aliases, commands }
