@@ -46,3 +46,9 @@ const shouldHaveMessage = (method, path, message, done) => {
     )
     .end()
 }
+
+
+module.exports = {
+  shouldBeOk,
+  shouldHaveMessage
+}
