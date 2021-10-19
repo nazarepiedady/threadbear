@@ -233,3 +233,30 @@ describe('DELETE /:customer/:product', () => {
     )
   })
 })
+
+
+describe('GET /register', () => {
+  it('should have the correct status (200)', done => {
+    shouldBeOk('GET', '/register', done)
+  })
+
+  it('should have the correct markup', done => {
+    http.request({
+      host: process.env.HOST,
+      port: process.env.PORT,
+      method: 'GET',
+      path: '/register'
+    },
+    response => {
+      let buffer = ''
+
+      response.on('data', data => {
+        buffer += data
+      })
+
+      response.on('end', () => {
+        callback(buffer, response)
+      })
+    }).end()
+  })
+})
