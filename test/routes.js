@@ -1,3 +1,16 @@
+const http = require('http')
+const assert = require('assert')
+
+
+const {
+  shouldBeOk,
+  shouldHaveMessage
+} = require('./helpers')
+
+
+require('dotenv').config()
+
+
 // test the GET method of /login route
 describe('GET /login', () => {
   it('should have the correct status code (200)', done => {
