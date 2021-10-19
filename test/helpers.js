@@ -50,7 +50,7 @@ const shouldHaveMessage = (method, path, message, done) => {
 }
 
 
-const request = (method, path, callback, options) => {
+const request = (method, path, callback, options = {}) => {
   let data = ''
   const methods = ['POST', 'PUT', 'PATCH']
 
