@@ -1,8 +1,10 @@
 const http = require('http')
 const assert = require('assert')
+const cheerio = require('cheerio')
 
 
 const {
+  request,
   shouldBeOk,
   shouldHaveMessage
 } = require('./helpers')
@@ -241,22 +243,15 @@ describe('GET /register', () => {
   })
 
   it('should have the correct markup', done => {
-    http.request({
-      host: process.env.HOST,
-      port: process.env.PORT,
-      method: 'GET',
-      path: '/register'
-    },
-    response => {
-      let buffer = ''
+    request('GET', '/register', markup => {
+      const find = cheerio.load(markup)
 
-      response.on('data', data => {
-        buffer += data
-      })
+      assert.equal(find('h1').text(), 'Register')
+      assert.equal(find('input[name="email"]').length, 1)
+      assert.equal(find('input[name="password"]').length, 1)
+      assert.equal(find('input[name="confirm-password"').length, 1)
 
-      response.on('end', () => {
-        callback(buffer, response)
-      })
-    }).end()
+      done()
+    })
   })
 })
