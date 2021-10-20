@@ -27,9 +27,9 @@ Route.get('/register', ({ view }) => {
   return view.render('user/register')
 })
 
-Route.post('/register', () => {
+Route.post('/register', ({ request }) => {
   // create new customer profile
-  return 'POST /register'
+  return JSON.stringify(request.all())
 })
 
 
