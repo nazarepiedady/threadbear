@@ -6,7 +6,7 @@
 
 
 @section('content')
-  <form method="post">
+  <form method="post" action="/register">
     <div class="form-group">
       <label for="email">E-mail Address</label>
       <input class="form-control" id="email" type="email" name="email">
@@ -23,5 +23,6 @@
     </div>
 
     <button class="btn btn-primary" type="submit">Register</button>
+    {{ csrfField() }}
   </form>
 @endsection
