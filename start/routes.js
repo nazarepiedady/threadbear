@@ -70,9 +70,10 @@ Route.get('/reset-password/:token', ({ params }) => {
   return 'GET /reset-password ' + params.token
 })
 
-Route.post('/reset-password/:token', ({ params }) => {
+Route.patch('/reset-password/:token', ({ request, params }) => {
   // create new password reset token and send e-mail
-  return 'POST /reset-password ' + params.token
+  //return 'POST /reset-password ' + params.token
+  return JSON.stringify(request.all())
 })
 
 
