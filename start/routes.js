@@ -77,14 +77,20 @@ Route.patch('/reset-password/:token', ({ request, params }) => {
 })
 
 
+const redirects = {
+  assertchris: 'christopher',
+  thetutlage: 'harminder'
+}
+
 // customer routes
 Route.get('/:customer', ({ response, view, params }) => {
   // show customer profile
-  //return 'GET /:customer ' + params.customer
-  response.send(view.render('user/profile', {
-    name: params.customer
-  }))
-  return JSON.stringify(Object.keys(response))
+  const redirect = redirects[params.customer]
+
+  if (redirect)
+    return response.redirect('/' + redirect)
+
+  return 'Welcome ' + params.customer
 })
 
 Route.put('/:customer', ({ params }) => {
