@@ -78,9 +78,10 @@ Route.patch('/reset-password/:token', ({ request, params }) => {
 
 
 // customer routes
-Route.get('/:customer', ({ params }) => {
+Route.get('/:customer', ({ response, views, params }) => {
   // show customer profile
-  return 'GET /:customer ' + params.customer
+  //return 'GET /:customer ' + params.customer
+  return JSON.stringify(Object.keys(response))
 })
 
 Route.put('/:customer', ({ params }) => {
