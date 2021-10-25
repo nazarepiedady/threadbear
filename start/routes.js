@@ -29,8 +29,7 @@ Route.get('/register', ({ view }) => {
 
 Route.post('/register', ({ request, response }) => {
   // create new customer profile
-  response.safeHeader('content-type', 'application/json')
-  response.send(JSON.stringify(request.all()))
+  response.json(request.all())
 })
 
 
