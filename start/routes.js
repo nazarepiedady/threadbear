@@ -112,11 +112,33 @@ Response.macro('xml', function(data, root='root') {
   this.send(parser.parse(root, data))
 })
 
+Route.get('/:customer/products', ({ params, response }) => {
+  const products = [
+    { price: 4.99, title: 'Teddy Bear' }
+  ]
+
+  if (params.format === '.xml') {
+    return response.xml(
+      {
+        product: products.map(product => ({
+          '@': { price: product.price },
+          '#': product.title
+        }))
+      }, 'products'
+    )
+  }
+
+  if (params.format === '.json') {
+    return response.json({ products })
+  }
+}).formats(['xml', 'json'])
+
 // customer products routes
+/*
 Route.get('/:customer/products', ({ params }) => {
   // show customer's products
   return 'GET /:customer/products ' + params.customer
-})
+})*/
 
 Route.post('/:customer/products', ({ params }) => {
   // create a new product
