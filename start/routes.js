@@ -103,6 +103,7 @@ Route.delete('/:customer', ({ params }) => {
 })
 
 
+/*
 // npm install --save js2xmlparser
 const parser = use('js2xmlparser')
 const Response = use('Response')
@@ -153,13 +154,14 @@ Route.get('/:customer/products', ({ params, response }) => {
     default: () => '...render normal view'
   })
 }).formats(['xml', 'json'])
+*/
 
 // customer products routes
-/*
+
 Route.get('/:customer/products', ({ params }) => {
   // show customer's products
   return 'GET /:customer/products ' + params.customer
-})*/
+})
 
 Route.post('/:customer/products', ({ params }) => {
   // create a new product
