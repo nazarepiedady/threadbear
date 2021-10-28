@@ -135,20 +135,23 @@ Route.get('/:customer/products', ({ params, response }) => {
     { price: 4.99, title: 'Teddy Bear' }
   ]
 
-  if (params.format === '.xml') {
-    return response.xml(
+  return response.for(params, {
+    xml: () => [
       {
         product: products.map(product => ({
           '@': { price: product.price },
           '#': product.title
         }))
-      }, 'products'
-    )
-  }
-
-  if (params.format === '.json') {
-    return response.json({ products })
-  }
+      },
+      'products'
+    ],
+    json: () => [
+      {
+        products
+      }
+    ],
+    default: () => '...render normal view'
+  })
 }).formats(['xml', 'json'])
 
 // customer products routes
