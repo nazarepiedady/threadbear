@@ -20,7 +20,6 @@ Route.get('/', ({ view }) => {
   return view.render('page/home')
 })
 
-
 // register routes
 Route.get('/register', ({ view }) => {
   // show registration form
@@ -103,6 +102,15 @@ Route.delete('/:customer', ({ params }) => {
   return 'DELETE /:customer ' + params.customer
 })
 
+
+// npm install --save js2xmlparser
+const parser = use('js2xmlparser')
+const Response = use('Response')
+
+Response.macro('xml', function(data, root='root') {
+  this.type('application/xml')
+  this.send(parser.parse(root, data))
+})
 
 // customer products routes
 Route.get('/:customer/products', ({ params }) => {
