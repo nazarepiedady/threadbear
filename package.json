@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "test": "node ace test"
+    "test": "mocha --reporter list"
   },
   "keywords": [
     "adonisjs",
@@ -29,7 +29,10 @@
     "@adonisjs/validator": "^5.1.0",
     "sqlite3": "^5.0.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "cheerio": "^1.0.0-rc.10",
+    "mocha": "^9.0.1"
+  },
   "autoload": {
     "App": "./app"
   }

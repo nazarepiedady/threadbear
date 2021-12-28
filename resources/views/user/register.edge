@@ -1,0 +1,28 @@
+@layout('layout')
+
+@section('header')
+  <h1>Register</h1>
+@endsection
+
+
+@section('content')
+  <form method="post" action="/register">
+    <div class="form-group">
+      <label for="email">E-mail Address</label>
+      <input class="form-control" id="email" type="email" name="email">
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input class="form-control" id="password" type="password" name="password">
+    </div>
+
+    <div class="form-group">
+      <label for="confirm-password">Confirm Password</label>
+      <input class="form-control" id="confirm-password" type="password" name="confirm-password">
+    </div>
+
+    <button class="btn btn-primary" type="submit">Register</button>
+    {{ csrfField() }}
+  </form>
+@endsection
