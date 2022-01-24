@@ -1,11 +1,14 @@
 'use strict'
 
+
+const Controller = use('App/Controllers/Http/Controller')
+
 const redirects = {
   assertchris: 'christopher',
   thetutlage: 'harminder',
 }
 
-class CustomerController {
+class CustomerController extends Controller {
   showLogin({ view }) {
     return view.render('customer/login')
   }
@@ -24,27 +27,27 @@ class CustomerController {
     return view.render('customer/register')
   }
 
-  register({ request, response }) {
+  register(context) {
     // ...create new customer profile
-    response.json(request.all())
+    this.showRequestParameters(context)
   }
 
   showForgotPassword({ view }) {
     return view.render('customer/forgot-password')
   }
 
-  forgotPassword({ request }) {
+  forgotPassword(context) {
     // create new password reset token and send e-mail
-    return JSON.stringify(request.all())
+    this.showRequestParameters(context)
   }
 
   showResetPassword({ view, params }) {
     return view.render('customer/reset-password', { token: params.token })
   }
 
-  resetPassword({ request }) {
+  resetPassword(context) {
     // create new password reset token and send e-mail
-    return JSON.stringify(request.all())
+    this.showRequestParameters(context)
   }
 
   showProfile({ params, response, view }) {
