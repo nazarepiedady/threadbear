@@ -17,6 +17,25 @@
 const Route = use('Route')
 const Database = use('Database')
 
+
+Route.get('/add-redirects', async () => {
+  const created_at = Database.raw('CURRENT_TIME')
+
+  await Database.insert({
+    from: 'assertchris',
+    to: 'christopher',
+    created_at
+  }).into('redirects')
+
+  await Database.insert({
+    from: 'thetutlage',
+    to: 'harminder',
+    created_at
+  }).into('redirects')
+
+  return 'done';
+})
+
 Route.get('/', async ({ view }) => {
   const result = await Database.raw('SELECT CURRENT_TIME as time')
   console.log('when you hear the beep, it will be ' + result[0].time)
