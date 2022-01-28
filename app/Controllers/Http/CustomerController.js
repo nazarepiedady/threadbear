@@ -1,6 +1,7 @@
 'use strict'
 
 
+const Database = use('Database')
 const Controller = use('App/Controllers/Http/Controller')
 
 const redirects = {
@@ -50,7 +51,14 @@ class CustomerController extends Controller {
     this.showRequestParameters(context)
   }
 
-  showProfile({ params, response, view }) {
+  async showProfile({ params, response, view }) {
+    const rows = await Database.select('from', 'to').from('redirects')
+
+    const redirects = rows.reduce((accumulator, row) => {
+      accumulator[row.from] = row.to
+      return accumulator
+    }, {})
+
     const redirect = redirects[params.customer]
 
     if (redirect) return response.route('profile', { customer: redirect })
