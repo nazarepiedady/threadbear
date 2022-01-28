@@ -5,12 +5,15 @@
 
 // npm install --save geoip-lite
 // npm install --save currency-map-country
+
+/*
 const geoip = use('geoip-lite')
 const {
   getCountry,
   getCountryByAbbreviation,
   getCurrency
 } = use('current-map-country')
+*/
 
 class CurrencySelector {
   /**
@@ -20,6 +23,8 @@ class CurrencySelector {
    */
   async handle ({ request }, next) {
     // call next to advance the request
+
+    /*
     const ip = request.ip()
     const reference = geoip.lookup(ip)
 
@@ -39,6 +44,7 @@ class CurrencySelector {
 
     request.currencyFormat = currency.symbolFormat
 
+    */
     await next()
   }
 }

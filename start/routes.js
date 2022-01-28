@@ -15,8 +15,11 @@
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
+const Database = use('Database')
 
-Route.get('/', ({ view }) => {
+Route.get('/', async ({ view }) => {
+  const result = await Database.raw('SELECT CURRENT_TIME as time')
+  console.log('when you hear the beep, it will be ' + result[0].time)
   return view.render('page/home')
 })
 
