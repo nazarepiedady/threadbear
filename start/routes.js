@@ -19,8 +19,6 @@ const Database = use('Database')
 
 
 Route.get('/', async ({ view }) => {
-  const result = await Database.raw('SELECT CURRENT_TIME as time')
-  console.log('when you hear the beep, it will be ' + result[0].time)
   return view.render('page/home')
 })
 
