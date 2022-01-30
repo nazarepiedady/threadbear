@@ -53,7 +53,13 @@ class DatabaseSeeder {
     }).into('customers')
 
 
-
+    // insert products
+    await Database.insert({
+      name: 'Soft Teddy',
+      price: 499,
+      customer_id: ids[0],
+      created_at
+    }).into('products')
   }
 }
 
