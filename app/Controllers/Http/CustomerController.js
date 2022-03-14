@@ -63,7 +63,14 @@ class CustomerController extends Controller {
 
     if (redirect) return response.route('profile', { customer: redirect })
 
-    response.send(view.render('customer/profile', { name: params.customer }))
+    const customer = await Database.select('*')
+      .from('customer')
+      .where('nickname', params.customer)
+      .first()
+
+    if (!customer) return view.render('oops', { type: 'PROFILE_MISSING' })
+
+    return view.render('customer/profile', { name: params.customer })
   }
 
   updateProfile({ params }) {
