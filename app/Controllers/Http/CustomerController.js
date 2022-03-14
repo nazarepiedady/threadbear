@@ -70,7 +70,11 @@ class CustomerController extends Controller {
 
     if (!customer) return view.render('oops', { type: 'PROFILE_MISSING' })
 
-    return view.render('customer/profile', { name: params.customer })
+    const products = await Database.select('*')
+      .from('products')
+      .where('customer_id', customer.id)
+
+    return view.render('customer/profile', { customer, products })
   }
 
   updateProfile({ params }) {
