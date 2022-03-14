@@ -64,7 +64,7 @@ class CustomerController extends Controller {
     if (redirect) return response.route('profile', { customer: redirect })
 
     const customer = await Database.select('*')
-      .from('customer')
+      .from('customers')
       .where('nickname', params.customer)
       .first()
 
