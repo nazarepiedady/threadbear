@@ -20,6 +20,17 @@ class Customer extends Model {
       customer.password = await Hash.make(customer.password)
     })
   }
+
+  static async authenticate(email, password) {
+    const customer = await Customer.findByOrFail('emal', email)
+    const matches = await Hash.verify(password, customer.password)
+
+    if (matches) {
+      return customer
+    }
+
+    return throw Error('invalid credentials')
+  }
 }
 
 module.exports = Customer
