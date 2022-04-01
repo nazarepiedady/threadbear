@@ -2,12 +2,17 @@
 
 
 const Database = use('Database')
+
 const Controller = use('App/Controllers/Http/Controller')
 
-const redirects = {
+const Customer = use('App/Models/Customer')
+const Redirect = use('App/Models/Redirect')
+const Product = use('App/Models/Product')
+
+/*const redirects = {
   assertchris: 'christopher',
   thetutlage: 'harminder',
-}
+}*/
 
 class CustomerController extends Controller {
   showLogin({ view }) {
@@ -52,27 +57,28 @@ class CustomerController extends Controller {
   }
 
   async showProfile({ params, response, view }) {
-    const rows = await Database.select('from', 'to').from('redirects')
 
-    const redirects = rows.reduce((accumulator, row) => {
-      accumulator[row.from] = row.to
-      return accumulator
-    }, {})
+    const rows = await Redirect.all()
+
+    const redirects = Array.from(rows).reduce(
+      (accumulator, row) => {
+        accumulator[row.from] = row.to
+        return accumulator
+      },
+      {}
+    )
 
     const redirect = redirects[params.customer]
 
     if (redirect) return response.route('profile', { customer: redirect })
 
-    const customer = await Database.select('*')
-      .from('customers')
+    const customer = await Customer.query()
       .where('nickname', params.customer)
       .first()
 
     if (!customer) return view.render('oops', { type: 'PROFILE_MISSING' })
 
-    const products = await Database.select('*')
-      .from('products')
-      .where('customer_id', customer.id)
+    const products = await customer.products()
 
     return view.render('customer/profile', { customer, products })
   }
