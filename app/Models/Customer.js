@@ -7,6 +7,10 @@ class Customer extends Model {
   products() {
     return this.hasMany('App/Models/Product')
   }
+
+  setNickname(nickname) {
+    return nickname.toLowerCase()
+  }
 }
 
 module.exports = Customer
