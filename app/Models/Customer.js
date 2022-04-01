@@ -2,6 +2,7 @@
 
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Model = use('Model')
+const Hash = use('Hash')
 
 class Customer extends Model {
   products() {
@@ -10,6 +11,14 @@ class Customer extends Model {
 
   setNickname(nickname) {
     return nickname.toLowerCase()
+  }
+
+  static boot() {
+    super.boot()
+
+    this.addHook('beforeCreate', async customer => {
+      customer.password = await Hash.make(customer.password)
+    })
   }
 }
 
