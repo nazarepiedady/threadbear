@@ -33,9 +33,20 @@ class CustomerController extends Controller {
     return view.render('customer/register')
   }
 
-  register(context) {
+  register({ request, response }) {
     // ...create new customer profile
-    this.showRequestParameters(context)
+
+    const customer = await Customer.create(
+      request.only([
+        'first-name',
+        'last-name',
+        'email',
+        'password',
+        'nickname'
+      ])
+    )
+
+    return 'done'
   }
 
   showForgotPassword({ view }) {
