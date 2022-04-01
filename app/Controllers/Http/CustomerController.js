@@ -25,15 +25,13 @@ class CustomerController extends Controller {
     const email = request.input('email')
     const password = request.input('password')
 
-    const customer = await Customer.findByOrFail('email', email)
-
-    const matches = await Hash.verify(password, customer.password)
-
-    if (matches) {
-      return 'valid'
-    } else {
+    try {
+      const customer = await Customer.authenticate(email, password)
+    } catch (exception) {
       return 'invalid'
     }
+
+    return 'valid'
   }
 
   logout() {
