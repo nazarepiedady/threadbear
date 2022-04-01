@@ -43,7 +43,7 @@ class CustomerController extends Controller {
     return view.render('customer/register')
   }
 
-  register({ request, response }) {
+  async register({ request, response }) {
     // ...create new customer profile
 
     const customer = await Customer.create(
