@@ -1,6 +1,6 @@
 'use strict'
 
-
+const Hash = use('Hash')
 const Database = use('Database')
 
 const Controller = use('App/Controllers/Http/Controller')
@@ -19,9 +19,21 @@ class CustomerController extends Controller {
     return view.render('customer/login')
   }
 
-  login() {
+  login({ request, reponse }) {
     // create new customer session
-    return 'POST /login'
+
+    const email = request.input('email')
+    const password = request.input('password')
+
+    const customer = await Customer.findByOrFail('email', email)
+
+    const matches = await Hash.verify(password, customer.password)
+
+    if (matches) {
+      return 'valid'
+    } else {
+      return 'invalid'
+    }
   }
 
   logout() {
