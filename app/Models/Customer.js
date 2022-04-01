@@ -29,7 +29,7 @@ class Customer extends Model {
       return customer
     }
 
-    return throw Error('invalid credentials')
+    throw Error('invalid credentials')
   }
 }
 
