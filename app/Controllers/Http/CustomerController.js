@@ -19,7 +19,7 @@ class CustomerController extends Controller {
     return view.render('customer/login')
   }
 
-  login({ request, reponse }) {
+  async login({ request, reponse }) {
     // create new customer session
 
     const email = request.input('email')
