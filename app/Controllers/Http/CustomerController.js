@@ -19,6 +19,17 @@ class CustomerController extends Controller {
   async login({ request, reponse }) {
     // create new customer session
 
+    const rules = {
+      email: 'required|email',
+      password: 'required'
+    }
+
+    const validation = await validate(request.all(), rules)
+
+    if (validation.fails()) {
+      return response.json(validation.messages())
+    }
+
     const email = request.input('email')
     const password = request.input('password')
 
