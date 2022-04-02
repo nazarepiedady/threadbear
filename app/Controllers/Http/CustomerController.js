@@ -56,8 +56,8 @@ class CustomerController extends Controller {
 
     const customer = await Customer.create(
       request.only([
-        'first-name',
-        'last-name',
+        'first_name',
+        'last_name',
         'email',
         'password',
         'nickname'
