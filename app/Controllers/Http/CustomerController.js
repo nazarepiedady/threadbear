@@ -2,17 +2,14 @@
 
 const Hash = use('Hash')
 const Database = use('Database')
+const { validator } = use('Validator')
+
+const Product = use('App/Models/Product')
+const Customer = use('App/Models/Customer')
+const Redirect = use('App/Models/Redirect')
 
 const Controller = use('App/Controllers/Http/Controller')
 
-const Customer = use('App/Models/Customer')
-const Redirect = use('App/Models/Redirect')
-const Product = use('App/Models/Product')
-
-/*const redirects = {
-  assertchris: 'christopher',
-  thetutlage: 'harminder',
-}*/
 
 class CustomerController extends Controller {
   showLogin({ view }) {
