@@ -1,7 +1,7 @@
 'use strict'
 
 const path = require('path')
-const rootPath = path.dirname(__dirname)
+//const rootPath = path.dirname(__dirname)
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +22,9 @@ const providers = [
   '@adonisjs/shield/providers/ShieldProvider',
   '@adonisjs/session/providers/SessionProvider',
   '@adonisjs/auth/providers/AuthProvider',
+  '@adonisjs/validator/providers/ValidatorProvider',
 
-  rootPath + '/app/Providers/ViewProvider'
+  //rootPath + '/app/Providers/ViewProvider'
 ]
 
 /*
