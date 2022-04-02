@@ -2,7 +2,7 @@
 
 const Hash = use('Hash')
 const Database = use('Database')
-const { validator } = use('Validator')
+const { validate } = use('Validator')
 
 const Product = use('App/Models/Product')
 const Customer = use('App/Models/Customer')
