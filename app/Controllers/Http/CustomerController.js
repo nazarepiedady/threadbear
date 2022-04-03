@@ -24,10 +24,8 @@ class CustomerController extends Controller {
       password: 'required'
     }
 
-    const validation = await validate(request.all(), rules)
-
-    if (validation.fails()) {
-      return response.json(validation.messages())
+    if (!await this.validate({ request, response, session, rules })) {
+      return
     }
 
     const email = request.input('email')
