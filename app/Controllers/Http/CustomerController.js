@@ -61,7 +61,19 @@ class CustomerController extends Controller {
       nickname: 'required'
     }
 
-    if (!await this.validate( request, response, session, rules )) {
+    const messages = {
+      'first_name.required': 'You must provide a first name',
+      'last_name.required': 'You must provide a last name',
+      'email.required': 'You must provide an email address',
+      'email.unique': 'Your email must be unique',
+      'password.required': 'You must provide a password',
+      'confirm_password.required': 'You must confirm the password',
+      'confirm_password.same': 'Passwords must match',
+      'nickname.required': 'You must provide a nickname'
+    }
+
+    if (!await this.validate(
+        request, response, session, rules, messages )) {
       return
     }
 
