@@ -20,7 +20,7 @@ class CustomerController extends Controller {
     // create new customer session
 
     const rules = {
-      email: 'required|email',
+      email: 'required|email|exists:customers,email',
       password: 'required'
     }
 
