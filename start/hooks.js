@@ -24,4 +24,11 @@ hooks.after.providersBooted(() => {
   }
 
   Validator.extend('exists', exists)
+
+
+  const Exception = use('Exception')
+
+  Exception.handle('HttpException', async (error, { response, session }) => {
+    return
+  })
 })
