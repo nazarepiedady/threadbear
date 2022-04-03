@@ -29,6 +29,10 @@ hooks.after.providersBooted(() => {
   const Exception = use('Exception')
 
   Exception.handle('HttpException', async (error, { response, session }) => {
-    return
+    session.withErrors(error.messages).flashAll()
+
+    await session.commit()
+
+    return response.redirect('back')
   })
 })

@@ -72,10 +72,7 @@ class CustomerController extends Controller {
       'nickname.required': 'You must provide a nickname'
     }
 
-    if (!await this.validate(
-        request, response, session, rules, messages )) {
-      return
-    }
+    await this.validate(request, rules, messages)
 
     const customer = await Customer.create(
       request.only([
