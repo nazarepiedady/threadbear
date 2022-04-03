@@ -49,8 +49,21 @@ class CustomerController extends Controller {
     return view.render('customer/register')
   }
 
-  async register({ request, response }) {
+  async register({ request, response, session }) {
     // ...create new customer profile
+
+    const rules = {
+      first_name: 'required',
+      last_name: 'required',
+      email: 'required|email|unique|customers,email',
+      password: 'required',
+      confirm_password: 'required|same:password',
+      nickname: 'required'
+    }
+
+    if (!await this.validate( request, response, session, rules )) {
+      return
+    }
 
     const customer = await Customer.create(
       request.only([
