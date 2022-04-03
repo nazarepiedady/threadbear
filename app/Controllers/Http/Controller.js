@@ -8,7 +8,7 @@ class Controller {
   }
 
   async validate({ request, response, session, rules }) {
-    const validation = await validateAll(request.all(), rules)
+    const validation = await validateAll(request.all(), rules, messages)
 
     if (validation.fails()) {
       session
