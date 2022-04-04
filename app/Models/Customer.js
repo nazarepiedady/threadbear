@@ -10,6 +10,16 @@ class Customer extends Base {
     return this.hasMany('App/Models/Product')
   }
 
+  pendingOrders() {
+    return this.hasMany('App/Models/Order', 'id', 'seller_id')
+               .where('status', 'pending')
+  }
+
+  completeOrders() {
+    return this.hasMany('App/Models/Order', 'id', 'seller_id')
+               .where('status', 'complete')
+  }
+
   setNickname(nickname) {
     return nickname.toLowerCase()
   }
