@@ -10,6 +10,8 @@ const Redirect = use('App/Models/Redirect')
 
 const Controller = use('App/Controllers/Http/Controller')
 
+const ProfileMissingException = use('App/Exceptions/ProfileMissingException')
+
 
 class CustomerController extends Controller {
   showLogin({ view }) {
@@ -125,7 +127,7 @@ class CustomerController extends Controller {
       .where('nickname', params.customer)
       .first()
 
-    if (!customer) return view.render('oops', { type: 'PROFILE_MISSING' })
+    if (!customer) throw new ProfileMissingException()
 
     const products = await customer.products()
 
