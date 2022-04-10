@@ -140,6 +140,36 @@ class CustomerController extends Controller {
     // delete customer profile
     return 'DELETE /:customer ' + params.customer
   }
+
+  async dashboard({ request, response, session, view }) {
+    const customerId = session.get('customer')
+
+    if (!customerId) {
+      return response.route('login')
+    }
+
+    const customer = await Customer.find(customerId)
+    const products = await customer.products().fetch()
+
+    const pendingOrders = await customer
+      .pendingOrders()
+      .with('buyer')
+      .with('items.product')
+      .fetch()
+
+    const completeOrders = await customer
+      .completeOrders()
+      .with('buyer')
+      .with('items.product')
+      .fetch()
+
+    return view.render('customer/dashboard', {
+      customer: customer.toJSON(),
+      products: products.toJSON(),
+      pendingOrders: pendingOrders.toJSON(),
+      completeOrders: completeOrders.toJSON()
+    })
+  }
 }
 
 module.exports = CustomerController
