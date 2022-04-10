@@ -18,7 +18,7 @@ class CustomerController extends Controller {
     return view.render('customer/login')
   }
 
-  async login({ request, reponse }) {
+  async login({ request, response, session }) {
     // create new customer session
 
     const rules = {
@@ -33,7 +33,10 @@ class CustomerController extends Controller {
 
     const customer = await Customer.authenticate(email, password)
 
-    return 'valid'
+    session.put('customer', customer.id)
+    await session.commit()
+
+    return response.route('dashboard')
   }
 
   logout() {
