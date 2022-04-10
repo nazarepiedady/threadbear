@@ -3,6 +3,7 @@
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Hash = use('Hash')
 const Base = use('App/Models/Base')
+const { ValidationException } = use('@adonisjs/validator/src/Exceptions')
 
 class Customer extends Base {
 
@@ -48,7 +49,7 @@ class Customer extends Base {
       return customer
     }
 
-    throw Error('invalid credentials')
+    throw ValidationException.validationFailed({ email: 'invalid credentials' })
   }
 }
 
