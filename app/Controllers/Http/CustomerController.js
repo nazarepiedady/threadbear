@@ -26,18 +26,12 @@ class CustomerController extends Controller {
       password: 'required'
     }
 
-    if (!await this.validate({ request, response, session, rules })) {
-      return
-    }
+    await this.validate(request, rules)
 
     const email = request.input('email')
     const password = request.input('password')
 
-    try {
-      const customer = await Customer.authenticate(email, password)
-    } catch (exception) {
-      return 'invalid'
-    }
+    const customer = await Customer.authenticate(email, password)
 
     return 'valid'
   }
