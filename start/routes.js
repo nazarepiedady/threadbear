@@ -57,3 +57,5 @@ Route.put('/:customer', 'CustomerController.updateProfile')
 
 
 Route.delete('/:customer', 'CustomerController.deleteProfile')
+
+Route.get('/dashboard', 'CustomerController.dashboard').as('dashboard')
