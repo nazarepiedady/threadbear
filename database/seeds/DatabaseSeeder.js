@@ -15,8 +15,25 @@ const moment = use('moment')
 const Factory = use('Factory')
 const Database = use('Database')
 
+async function getIdsFromTable(table) {
+  const rawIds = await Database.select('id')
+    .from(table)
+    .orderBy('id', 'asc')
+    //.map(next => next.id)
+  const formatedIds = Array.from(rawIds).map(next => next.id)
+  return formatedIds
+}
 
 class DatabaseSeeder {
+  /*
+  async ids(table) {
+    return await Database.select('id')
+      .from(table)
+      //.orderBy('id', 'asc')
+      //.map(next => next.id)
+  }
+  */
+
   async run() {
     const timestamps = {
       created_at: moment().format('YYYY-MM-DD HH:mm:ss'),
@@ -58,41 +75,41 @@ class DatabaseSeeder {
       }
     ]).into('customers')
 
-    const customerIds = await this.ids('customers')
+    const customerIds = await getIdsFromTable('customers') // this.ids('customers')
+    console.log(customerIds, typeof customerIds)
 
     // insert products
-    await Database.insert({
-      name: 'Soft Teddy',
-      price: 499,
-      customer_id: ids[0],
-      ...timestamps
-    }).into('products')
+    await Database.insert([
+      {
+        name: 'Soft Teddy',
+        price: 499,
+        customer_id: customerIds[0],
+        ...timestamps
+      }
+    ]).into('products')
 
-    const productsIds = await this.ids('products')
+    const productsIds = await getIdsFromTable('products') //this.ids('products')
 
-    await Database.insert([{
-      buyer_id: customerIds[0],
-      seller_id: customerIds[1],
-      status: 'pending',
-      ...timestamps
-    }]).into('orders')
+    await Database.insert([
+      {
+        buyer_id: customerIds[0],
+        seller_id: customerIds[1],
+        status: 'pending',
+        ...timestamps
+      }
+    ]).into('orders')
 
-    const orderIds = await this.ids('orders')
+    const orderIds = await getIdsFromTable('orders') //this.ids('orders')
 
-    await Database.insert([{
-      order_id: orderIds[0],
-      product_id: productsIds[0],
-      quantity: 2,
-      price: 499,
-      ...timestamps
-    }]).into('order_items')
-  }
-
-  async ids(table) {
-    return await Database.select('id')
-      .from(table)
-      .orderBy('id', 'asc')
-      .map(next => next.id)
+    await Database.insert([
+      {
+        order_id: orderIds[0],
+        product_id: productsIds[0],
+        quantity: 2,
+        price: 499,
+        ...timestamps
+      }
+    ]).into('order_items')
   }
 }
 
