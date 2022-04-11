@@ -39,9 +39,12 @@ class CustomerController extends Controller {
     return response.route('dashboard')
   }
 
-  logout() {
+  async logout({ session, response }) {
     // expire current customer session
-    return 'PUT /logout'
+    session.forget('customer')
+    await session.commit()
+
+    return response.route('login')
   }
 
   showRegister({ view }) {
