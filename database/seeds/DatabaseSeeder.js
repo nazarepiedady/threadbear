@@ -24,17 +24,18 @@ class DatabaseSeeder {
     }
 
     // insert redirects
-    await Database.insert({
-      from: 'assertchris',
-      to: 'christopher',
-      ...timestamps
-    }).into('redirects')
-
-    await Database.insert({
-      from: 'thetutlage',
-      to: 'harminder',
-      ...timestamps
-    }).into('redirects')
+    await Database.insert([
+      {
+        from: 'assertchris',
+        to: 'christopher',
+        ...timestamps
+      },
+      {
+        from: 'thetutlage',
+        to: 'harminder',
+        ...timestamps
+      }
+    ]).into('redirects')
 
 
     // insert customers
