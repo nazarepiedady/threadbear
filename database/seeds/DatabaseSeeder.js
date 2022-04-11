@@ -38,23 +38,24 @@ class DatabaseSeeder {
 
 
     // insert customers
-    await Database.insert({
-      first_name: 'Harminder',
-      last_name: 'Virk',
-      email: 'virk.officials@gmail.com',
-      password: await Hash.make('harminder123'),
-      nickname: 'harminder',
-      ...timestamps
-    }).into('customers')
-
-    await Database.insert({
-      first_name: 'Christopher',
-      last_name: 'Pitt',
-      email: 'cgpitt@gmail.com',
-      password: await Hash.make('christopher123'),
-      nickname: 'christopher',
-      ...timestamps
-    }).into('customers')
+    await Database.insert([
+      {
+        first_name: 'Harminder',
+        last_name: 'Virk',
+        email: 'virk.officials@gmail.com',
+        password: await Hash.make('harminder123'),
+        nickname: 'harminder',
+        ...timestamps
+      },
+      {
+        first_name: 'Christopher',
+        last_name: 'Pitt',
+        email: 'cgpitt@gmail.com',
+        password: await Hash.make('christopher123'),
+        nickname: 'christopher',
+        ...timestamps
+      }
+    ]).into('customers')
 
     const customerIds = await this.ids('customers')
 
