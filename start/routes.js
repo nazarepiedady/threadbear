@@ -29,7 +29,7 @@ Route.get('/login', 'CustomerController.showLogin')
 Route.post('/login', 'CustomerController.login')
 
 
-Route.put('/logout', 'CustomerController.logout')
+Route.get('/logout', 'CustomerController.logout')
 
 
 Route.get('/register', 'CustomerController.showRegister')
