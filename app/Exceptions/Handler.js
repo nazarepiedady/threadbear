@@ -21,6 +21,11 @@ class ExceptionHandler extends BaseExceptionHandler {
    * @return {void}
    */
   async handle (error, { request, response }) {
+    if (error.code === 'EBADCSRFTOKEN') {
+      response.forbidden('Cannot process your request.')
+      return
+    }
+
     if (error.name === 'HttpException') {
       response.status(error.status).send('Not found')
       return
