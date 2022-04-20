@@ -29,7 +29,7 @@ Route.get('/login', 'CustomerController.showLogin')
 Route.post('/login', 'CustomerController.login')
 
 
-Route.put('/logout', 'CustomerController.logout')
+Route.get('/logout', 'CustomerController.logout')
 
 
 Route.get('/register', 'CustomerController.showRegister')
@@ -53,7 +53,12 @@ Route.patch('/reset-password/:token', 'CustomerController.resetPassword')
 Route.get('/:customer', 'CustomerController.showProfile').as('profile')
 
 
-Route.put('/:customer', 'CustomerController.updateProfile')
+//Route.put('/:customer', 'CustomerController.updateProfile')
+//Route.delete('/:customer', 'CustomerController.deleteProfile')
+//Route.get('/dashboard', 'CustomerController.dashboard').as('dashboard')
 
-
-Route.delete('/:customer', 'CustomerController.deleteProfile')
+Route.group(() => {
+  Route.get('/dashboard', 'CustomerController.dashboard').as('dashboard')
+  Route.put('/:customer', 'CustomerController.updateProfile').as('updateProfile')
+  Route.delete('/:customer', 'CustomerController.deleteProfile').as('deleteProfile')
+}).middleware(['auth'])

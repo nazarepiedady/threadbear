@@ -10,13 +10,15 @@ const Redirect = use('App/Models/Redirect')
 
 const Controller = use('App/Controllers/Http/Controller')
 
+const ProfileMissingException = use('App/Exceptions/ProfileMissingException')
+
 
 class CustomerController extends Controller {
   showLogin({ view }) {
     return view.render('customer/login')
   }
 
-  async login({ request, reponse }) {
+  async login({ request, response, session }) {
     // create new customer session
 
     const rules = {
@@ -24,25 +26,25 @@ class CustomerController extends Controller {
       password: 'required'
     }
 
-    if (!await this.validate({ request, response, session, rules })) {
-      return
-    }
+    await this.validate(request, rules)
 
     const email = request.input('email')
     const password = request.input('password')
 
-    try {
-      const customer = await Customer.authenticate(email, password)
-    } catch (exception) {
-      return 'invalid'
-    }
+    const customer = await Customer.authenticate(email, password)
 
-    return 'valid'
+    session.put('customer', customer.id)
+    await session.commit()
+
+    return response.route('dashboard')
   }
 
-  logout() {
+  async logout({ session, response }) {
     // expire current customer session
-    return 'PUT /logout'
+    session.forget('customer')
+    await session.commit()
+
+    return response.route('login')
   }
 
   showRegister({ view }) {
@@ -125,7 +127,7 @@ class CustomerController extends Controller {
       .where('nickname', params.customer)
       .first()
 
-    if (!customer) return view.render('oops', { type: 'PROFILE_MISSING' })
+    if (!customer) throw new ProfileMissingException()
 
     const products = await customer.products()
 
@@ -140,6 +142,36 @@ class CustomerController extends Controller {
   deleteProfile({ params }) {
     // delete customer profile
     return 'DELETE /:customer ' + params.customer
+  }
+
+  async dashboard({ request, response, session, view }) {
+    // const customerId = session.get('customer')
+
+    // if (!customerId) {
+    //  return response.route('login')
+    // }
+
+    // const customer = await Customer.find(customerId)
+    const products = await customer.products().fetch()
+
+    const pendingOrders = await customer
+      .pendingOrders()
+      .with('buyer')
+      .with('items.product')
+      .fetch()
+
+    const completeOrders = await customer
+      .completeOrders()
+      .with('buyer')
+      .with('items.product')
+      .fetch()
+
+    return view.render('customer/dashboard', {
+      customer: customer.toJSON(),
+      products: products.toJSON(),
+      pendingOrders: pendingOrders.toJSON(),
+      completeOrders: completeOrders.toJSON()
+    })
   }
 }
 
