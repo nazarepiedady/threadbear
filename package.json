@@ -34,8 +34,17 @@
     "sqlite3": "^5.0.2"
   },
   "devDependencies": {
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "bootstrap": "4.6",
     "cheerio": "^1.0.0-rc.10",
-    "mocha": "^9.0.1"
+    "laravel-mix": "^6.0.43",
+    "mocha": "^9.0.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "webpack": "^3.10.0"
   },
   "autoload": {
     "App": "./app"
