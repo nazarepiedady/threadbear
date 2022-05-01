@@ -10,6 +10,7 @@
     "rebuild-db": "adonis migration:refresh && adonis seed"
     "build": "$npm_package_config_webpack",
     "build:watch": "$npm_package_config_webpack -w",
+    "build:production": "$npm_package_config_webpack -p"
   },
   "config": {
     "webpack": "webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
