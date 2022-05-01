@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node server.js",
     "test": "mocha --reporter list",
-    "rebuild-db": "adonis migration:refresh && adonis seed"
+    "rebuild-db": "adonis migration:refresh && adonis seed",
     "build": "$npm_package_config_webpack",
     "build:watch": "$npm_package_config_webpack -w",
     "build:production": "$npm_package_config_webpack -p"
