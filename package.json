@@ -9,6 +9,9 @@
     "test": "mocha --reporter list",
     "rebuild-db": "adonis migration:refresh && adonis seed"
   },
+  "config": {
+    "webpack": "webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
   "keywords": [
     "adonisjs",
     "adonis-app"
