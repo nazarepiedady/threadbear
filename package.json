@@ -8,6 +8,7 @@
     "start": "node server.js",
     "test": "mocha --reporter list",
     "rebuild-db": "adonis migration:refresh && adonis seed"
+    "build": "$npm_package_config_webpack",
   },
   "config": {
     "webpack": "webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
