@@ -25,7 +25,7 @@ module.exports = [
 /*  {
     entry: path.resolve(__dirname, 'resources/sass/app.scss'),
     output: {
-      path: path.resolve(__dirname, 'public/js/'),
+      path: path.resolve(__dirname, 'public/css/'),
       filename: 'app.css'
     },
     module: {
