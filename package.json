@@ -49,6 +49,7 @@
     "css-loader": "^6.7.1",
     "laravel-mix": "^6.0.43",
     "mocha": "^9.0.1",
+    "node-sass": "^7.0.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "resolve-url-loader": "^5.0.0",
