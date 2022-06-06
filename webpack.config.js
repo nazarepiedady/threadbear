@@ -1,6 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
 
+function getFullPath(stringPath) {
+  return path.resolve(__dirname, stringPath);
+}
+
 module.exports = [
   {
     entry: path.resolve(__dirname, 'resources/js/app.js'),
