@@ -9,7 +9,7 @@ module.exports = [
   {
     entry: getFullPath('resources/js/app.js'),
     output: {
-      path: path.resolve(__dirname, 'public/js/'),
+      path: getFullPath('public/js/'),
       filename: 'app.js'
     },
     module: {
