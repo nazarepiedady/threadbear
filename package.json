@@ -13,7 +13,7 @@
     "build:production": "$npm_package_config_webpack -p"
   },
   "config": {
-    "webpack": "webpack --progress --hide-modules --config=./webpack.config.js"
+    "webpack": "webpack --progress --config=./webpack.config.js"
   },
   "keywords": [
     "adonisjs",
