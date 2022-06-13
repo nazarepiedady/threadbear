@@ -34,7 +34,6 @@
     "@adonisjs/session": "^1.0.27",
     "@adonisjs/shield": "^1.0.8",
     "@adonisjs/validator": "^5.1.0",
-    "geoip-lite": "^1.2.1",
     "js2xmlparser": "^3.0.0",
     "sqlite3": "^5.0.2"
   },
