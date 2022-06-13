@@ -8,9 +8,9 @@
     "start": "node server.js",
     "test": "mocha --reporter list",
     "rebuild-db": "adonis migration:refresh && adonis seed",
-    "build": "$npm_package_config_webpack",
+    "build": "$npm_package_config_webpack --mode=production",
     "build:watch": "$npm_package_config_webpack -w",
-    "build:production": "$npm_package_config_webpack -p"
+    "build:production": "$npm_package_config_webpack --mode=production"
   },
   "config": {
     "webpack": "webpack --progress --config=./webpack.config.js"
