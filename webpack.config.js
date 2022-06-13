@@ -36,14 +36,14 @@ module.exports = [
     module: {
       rules: [
         {
-          test: /\.(css|scss)$/,
+          test: /\.(scss|css)$/,
           exclude: /node_modules/,
           use: ['style-loader', 'css-loader', 'sass-loader']
         }
       ]
     },
     resolve: {
-      extensions: ['*', '.css', '.scss']
+      extensions: ['.scss', '.css']
     }
   }
 
