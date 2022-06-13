@@ -6,6 +6,7 @@ function getFullPath(stringPath) {
 }
 
 module.exports = [
+
   {
     entry: getFullPath('resources/js/app.js'),
     output: {
@@ -26,16 +27,23 @@ module.exports = [
     },
   },
   
-/*  {
-    entry: path.resolve(__dirname, 'resources/sass/app.scss'),
+  {
+    entry: getFullPath('resources/sass/app.scss'),
     output: {
-      path: path.resolve(__dirname, 'public/css/'),
+      path: getFullPath('public/css/'),
       filename: 'app.css'
     },
     module: {
       rules: [
-        { test: /\.scss$/, use: 'sass-loader' }
+        {
+          test: /\.(css|scss)$/,
+          use: ['style-loader', 'css-loader', 'sass-loader']
+        }
       ]
+    },
+    resolve: {
+      extensions: ['*', '.css', '.scss']
     }
-  }*/
+  }
+
 ];
